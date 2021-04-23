@@ -21,7 +21,7 @@ class AasbSpider(scrapy.Spider):
 			title = data['results'][index]['title']
 			yield response.follow(link, self.parse_post,cb_kwargs=dict(date=date, title=title))
 
-		if data['results']:
+		if len(data['results']) == 24:
 			self.page += 24
 			yield response.follow(base.format(self.page), self.parse)
 
